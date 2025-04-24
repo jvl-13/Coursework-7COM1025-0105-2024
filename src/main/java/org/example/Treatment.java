@@ -11,20 +11,13 @@ public class Treatment {
     private Date dateTime;
     private Physiotherapist physiotherapist;
     private int roomNumber;
-    private String status; // "available", "booked", "cancelled"
+    private String status; // "available", "booked"
 
-    public Treatment(String name, String dateTime, Physiotherapist physio, int roomNumber) {
+    public Treatment(String name, Date dateTime, Physiotherapist physio, int roomNumber) {
         this.id = String.format("T%04d", idCounter++);
         this.name = name;
         this.physiotherapist = physio;
-
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            this.dateTime = sdf.parse(dateTime);
-        } catch (ParseException e) {
-            System.out.println("Invalid date format. Please use 'yyyy-MM-dd HH:mm'.");
-            this.dateTime = null;
-        }
+        this.dateTime = dateTime;
         this.roomNumber = roomNumber;
         this.status = "available"; // Default status is available
     }
@@ -33,40 +26,20 @@ public class Treatment {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
-    }
-
     public Physiotherapist getPhysiotherapist() {
         return physiotherapist;
     }
 
-    public void setPhysiotherapist(Physiotherapist physiotherapist) {
-        this.physiotherapist = physiotherapist;
-    }
-
     public int getRoomNumber() {
         return roomNumber;
-    }
-
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
     }
 
     public String getStatus() {

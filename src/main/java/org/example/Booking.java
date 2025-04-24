@@ -5,7 +5,7 @@ public class Booking {
     private String id;
     private Patient patient;
     private Treatment treatment;
-    private String status;
+    private String status; //"attended" or "cancelled" or "booked"
 
     public Booking(Patient patient, Treatment treatment) {
         this.id = String.format("B%05d", idCounter++);
@@ -18,16 +18,8 @@ public class Booking {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public Patient getPatient() {
         return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 
     public Treatment getTreatment() {
@@ -53,6 +45,6 @@ public class Booking {
                 ", patient=" + patient +
                 ", treatment=" + treatment +
                 ", status='" + status + '\'' +
-                '}';
+                '}'+ '\n';
     }
 }
