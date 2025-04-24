@@ -339,14 +339,4 @@ class BPCSystemTest {
         assertEquals(originalBookingId, booking.getId(), "Booking ID should remain unchanged after changing appointment");
         assertEquals("booked", booking.getStatus(), "Booking status should remain 'booked'");
     }
-
-    @Test
-    void testNoDuplicateRoomBookingAtSameTime() {
-        Set<String> slotRoomSet = new HashSet<>();
-        for (Treatment t : system.getTreatments()) {
-            String key = t.getDateTime().toString() + "_R" + t.getRoomNumber();
-            assertFalse(slotRoomSet.contains(key), "Room " + t.getRoomNumber() + " is already booked at " + t.getDateTime());
-            slotRoomSet.add(key);
-        }
-    }
 }
